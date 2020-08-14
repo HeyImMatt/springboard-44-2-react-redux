@@ -1,25 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Row, Col, Container } from 'reactstrap';
+import MemeForm from './MemeForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Row className="align-items-center">
+        <Col md={{size: 8, offset: 3}}>
+          <h1>Meme Generator</h1>
+        </Col>
+        <MemeForm />
+      </Row>
+    </Container>
   );
 }
 
