@@ -27,6 +27,11 @@ function App() {
     setFormData(INITIAL_FORM_STATE);
   }
 
+  const deleteMeme = (e) => {
+    const memeIdx = parseInt(e.target.parentElement.id);
+    dispatch({type: 'DELETE_MEME', payload: memeIdx})
+  }
+
   return (
     <Container>
       <Row className="align-items-center">
@@ -34,7 +39,7 @@ function App() {
           <h1>Meme Generator</h1>
         </Col>
         <MemeForm formData={formData} changeHandler={changeHandler} submitHandler={submitHandler} />
-        <Meme />
+        <Meme deleteMeme={deleteMeme} />
       </Row>
     </Container>
   );

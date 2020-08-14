@@ -5,6 +5,10 @@ export default function rootReducer(state = INITIAL_STATE, action) {
   switch (type) {
     case "ADD_MEME":
       return {...state, memes: [...state.memes, payload]}
+    case "DELETE_MEME":
+      const newMemeArr = [...state.memes]
+      newMemeArr.splice(payload, 1)
+      return {...state, memes: [...newMemeArr]}
     default:
       return state;
   }
