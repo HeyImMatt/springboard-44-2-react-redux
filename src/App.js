@@ -12,7 +12,6 @@ function App() {
   const [formData, setFormData] = useState(INITIAL_FORM_STATE);
   const dispatch = useDispatch();
   const memes = useSelector((store) => store.memes);
-  console.log(memes)
   
   const changeHandler = (e) => {
     const { name, value } = e.target;
