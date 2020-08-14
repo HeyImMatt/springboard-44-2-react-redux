@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card, Button, CardTitle, CardText, Col, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Card, Button, CardText, Col, Form, FormGroup, Label, Input} from 'reactstrap';
 
 export default function MemeForm({formData, changeHandler, submitHandler}) {
-  //const { memeUrl } = formData;
+  const { memeUrl, memeTopText, memeBottomText } = formData;
   return (
     <Col md={{size: 8, offset: 2}} className="mt-3 text-center">
     <Card>
@@ -12,15 +12,15 @@ export default function MemeForm({formData, changeHandler, submitHandler}) {
         </CardText>
         <FormGroup>
           <Label for="meme-url">Image URL</Label>
-          <Input type="text" id="meme-url" name="memeUrl" value="memeUrl" onChange={changeHandler}></Input>
+          <Input type="text" id="meme-url" name="memeUrl" value={memeUrl} onChange={changeHandler}></Input>
         </FormGroup>
         <FormGroup>
           <Label for="top-text">Top Text</Label>
-          <Input type="text" id="top-text" name="memeTopText" value="memeTopText" onChange={changeHandler}></Input>
+          <Input type="text" id="top-text" name="memeTopText" value={memeTopText} onChange={changeHandler}></Input>
         </FormGroup>
         <FormGroup>
           <Label for="bottom-text">Bottom Text</Label>
-          <Input type="text" id="bottom-text" name="memeBottomText" value="memeBottomText" onChange={changeHandler}></Input>
+          <Input type="text" id="bottom-text" name="memeBottomText" value={memeBottomText} onChange={changeHandler}></Input>
         </FormGroup>
         <Button type="submit" color="info">Generate!</Button>
       </Form>
