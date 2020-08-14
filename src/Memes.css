@@ -1,0 +1,27 @@
+.meme {
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: white;
+  position: relative;
+  font-size: 3rem;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+
+.meme img {
+  width: 100%;
+}
+
+#meme-top-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1%;
+}
+
+#meme-bottom-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1%;
+}

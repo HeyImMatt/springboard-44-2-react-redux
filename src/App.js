@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Row, Col, Container } from 'reactstrap';
 import MemeForm from './MemeForm';
-import { useSelector, useDispatch } from 'react-redux';
+import Meme from './Memes';
+import { useDispatch } from 'react-redux';
 
 function App() {
   const INITIAL_FORM_STATE = {
@@ -11,7 +12,6 @@ function App() {
   };
   const [formData, setFormData] = useState(INITIAL_FORM_STATE);
   const dispatch = useDispatch();
-  const memes = useSelector((store) => store.memes);
   
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -34,6 +34,7 @@ function App() {
           <h1>Meme Generator</h1>
         </Col>
         <MemeForm formData={formData} changeHandler={changeHandler} submitHandler={submitHandler} />
+        <Meme />
       </Row>
     </Container>
   );
