@@ -6,7 +6,7 @@ export default function MemeForm({formData, changeHandler, submitHandler}) {
   return (
     <Col md={{size: 8, offset: 2}} className="mt-3 text-center">
     <Card>
-      <Form className="p-3">
+      <Form className="p-3" onSubmit={submitHandler}>
         <CardText>
           Create memes using the form below.<br />Enter a link for the image you want to use, some spicy text, and submit to view your masterpiece.
         </CardText>
