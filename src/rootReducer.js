@@ -1,20 +1,20 @@
-const INITIAL_STATE = { memes: [], deadMemes: [] };
+const INITIAL_STATE = { todoList: [] };
 
 export default function rootReducer(state = INITIAL_STATE, action) {
   const { type, payload } = action;
   switch (type) {
-    case 'ADD_MEME':
+    case 'ADD_TODO':
       return { ...state, memes: [...state.memes, payload] };
 
-    case 'DELETE_MEME':
-      const newMemeArr = [...state.memes];
-      newMemeArr.splice(payload, 1);
-      return { ...state, memes: [...newMemeArr] };
+    // case 'DELETE_MEME':
+    //   const newMemeArr = [...state.memes];
+    //   newMemeArr.splice(payload, 1);
+    //   return { ...state, memes: [...newMemeArr] };
 
-    case 'EDIT_MEME':
-      const updateMemeArr = [...state.memes];
-      updateMemeArr.splice(action.memeId, 1, payload);
-      return { ...state, memes: [...updateMemeArr] };
+    // case 'EDIT_MEME':
+    //   const updateMemeArr = [...state.memes];
+    //   updateMemeArr.splice(action.memeId, 1, payload);
+    //   return { ...state, memes: [...updateMemeArr] };
 
     default:
       return state;
