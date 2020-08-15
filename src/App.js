@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Row, Col, Container } from 'reactstrap';
 import MemeForm from './MemeForm';
 import Meme from './Memes';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
   const INITIAL_FORM_STATE = {
@@ -11,7 +11,9 @@ function App() {
     memeBottomText: '',
   };
   const [formData, setFormData] = useState(INITIAL_FORM_STATE);
+  const [editMode, setEditMode] = useState({idx: '', isEditing: false});
   const dispatch = useDispatch();
+  const memes = useSelector((store) => store.memes)
   
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -23,13 +25,24 @@ function App() {
   
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch({type: 'ADD_MEME', payload: {...formData}});
+    if (editMode.isEditing) {
+      dispatch({type: 'EDIT_MEME', payload: {...formData}, memeId: editMode.idx});
+      setEditMode({idx: '', isEditing: false});
+    } else {
+      dispatch({type: 'ADD_MEME', payload: {...formData}});
+    }
     setFormData(INITIAL_FORM_STATE);
   }
 
   const deleteMeme = (e) => {
     const memeIdx = parseInt(e.target.parentElement.id);
     dispatch({type: 'DELETE_MEME', payload: memeIdx})
+  }
+
+  const editMeme = (e) => {
+    const memeIdx = parseInt(e.target.parentElement.id)
+    setFormData(memes[memeIdx])
+    setEditMode({idx: memeIdx, isEditing: true})
   }
 
   return (
@@ -39,7 +52,7 @@ function App() {
           <h1>Meme Generator</h1>
         </Col>
         <MemeForm formData={formData} changeHandler={changeHandler} submitHandler={submitHandler} />
-        <Meme deleteMeme={deleteMeme} />
+        <Meme deleteMeme={deleteMeme} editMeme={editMeme} />
       </Row>
     </Container>
   );
